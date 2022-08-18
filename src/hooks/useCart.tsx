@@ -24,6 +24,19 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cart, setCart] = useState<Product[]>(() => {
 
+    // OUTRA FORMA DE FAZER, SEM USAR O SET
+    // const prevCartRef = useRef<Product[]>();
+    // useEffect(() =>{
+    //   prevCartRef.current = cart;
+    // })
+    // const cartPreviousValue = prevCartRef.current ?? cart;
+    // useEffect(() =>{
+    //   if(cartPreviousValue !== cart){
+    //     localStorage.setItem('@RocketShoes:cart', JSON.stringify(cart));
+    //   }
+    // }, [cart, cartPreviousValue]);
+
+
     const storagedCart = localStorage.getItem('@RocketShoes:cart');
 
     // CONVERTENDO A STRING EM JSON 
